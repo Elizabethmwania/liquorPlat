@@ -1,0 +1,32 @@
+{% extends 'd_base.html'%}
+{%load static%}
+
+{% block content %}
+
+<!-- top-brands -->
+<h1>Shop Now</h1>
+<!-- ---------------container------------------ -->
+<div class="container" style="margin-top: 60px;">
+
+    {% for liquor in liquors %}
+    <h3>{{liquor.name}}</h3>
+
+    <div class="row" style="padding-top: 50px;">
+        {% for brand in brands %}
+        {% if liquor.id == brand.product.id %}
+        <div class="col-sm-3 " style="margin-bottom: 50px; margin-top: 50px;">
+            <a href="{% url 'liquor' pk=brand.pk %}"><img title=" " alt=" " src="{{brand.img.url}}" width="125"
+                    height="150" /></a>
+            <p>{{brand.name}}</p><br>
+            <h4>Ksh. {{brand.price}} <br> <span><button>add to cart</button></span></h4>
+        </div>
+        {%endif%}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+<!-- ----------------end container----------------- -->
+{% endblock content %}
+
+<!-- ----------------------------------------------------------- -->

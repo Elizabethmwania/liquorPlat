@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block body %}
+
+
+
+<h2 style="text-align: center; background-color:rgb(87, 236, 87); width: 20%;">Sign Up Here</h2>
+
+<div class="container" style="width: 40%; background-color: cornsilk; margin-bottom: 5%; margin-top: 3%; ">
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+    <form method="POST" class="post-form" novalidate>
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {{ form|crispy }}
+    <button type="submit" class="save btn btn-primary">Sign in</button>
+</form>
+</div>
+
+
+{% endblock body %}

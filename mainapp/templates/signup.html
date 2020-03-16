@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        height: 300px;
+        /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    </style>
+</head>
+<body>
+
+
+    <h2> Select Account</h2>
+    
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            
+            <h2>Customer </h2>
+            <p>To sign up to this website as a customer you 
+                will have oppotunity to see our hot products and their 
+                advertisements from different brands. You will be able also to purchase a 
+                liquor product of your choice at a better price.
+
+            </p>
+            <p>Feel from to sign as 
+                <a href="{% url 'customer_signup' %}">customer</a> 
+            </p>
+        </div>
+
+        <div class="column" style="background-color:#bbb;">
+            <h2><a href="{% url 'seller_signup' %}">Seller</a></h2>
+            <p>Some text..</p>
+        </div>
+
+        <div class="column" style="background-color:#ccc;">
+            <h2><a href="{% url 'manufacturer_signup' %}">Manufacturer</a></h2>
+            <p>Some text..</p>
+        </div>
+    </div>
+
+</body>
+</html>

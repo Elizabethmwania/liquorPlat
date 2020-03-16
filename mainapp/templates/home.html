@@ -1,0 +1,196 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block body %}
+<div class="banner">
+    <div class="w3l_banner_nav_left">
+        <nav class="navbar nav_bottom">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header nav_2">
+                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                    data-target="#bs-megadropdown-tabs">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                <ul class="nav navbar-nav nav_1">
+                    <h3>Liquor Brands</h3>
+                    <ul class="nav navbar-nav nav_1">
+                        {% for liquor in liquors %}
+
+                        <li class="dropdown mega-dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{liquor.name}}<span
+                                    class="caret"></span></a>
+                            <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+                                <div class="w3ls_vegetables">
+                                    <ul>
+                                        {% for brand in brands %}
+                                        {% if liquor.id == brand.product.id %}
+                                        <li><a href="{% url 'liquor' pk=brand.pk %}"> {{brand.name}}</a></li>
+                                        {% endif %}
+                                        {% endfor%}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div>
+    <div class="w3l_banner_nav_right">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <div class="w3l_banner_nav_right_banner">
+                            <h3>Take enough liquor <span>No</span> Excess liquor.</h3>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="w3l_banner_nav_right_banner1">
+                            <h3>Liquor not <span>Sold</span> to under 18.</h3>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="w3l_banner_nav_right_banner2">
+                            <h3>Enjoy <i>Our</i> products</h3>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<!-- top-brands -->
+<div class="top-brands">
+    <div class="container">
+        <h3>Hot Offers</h3>
+        <div class="agile_top_brands_grids">
+            <!-- start of one produc  -->
+            {% for hotproduct in hotproducts %}
+            <div class="col-md-3 top_brand_left">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+
+
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+
+                                        <a href="{% url 'liquor' pk=hotproduct.pk %}">
+                                            <img alt="" src="{{ hotproduct.img.url }}" width="200" />
+                                        </a>
+
+                                        <p>{{hotproduct.name}}</p>
+                                        <h4>Ksh. {{hotproduct.price}}<span>$10.00</span></h4>
+                                        <p><button>add to cart</button></p>
+                                    </div>
+
+                                </div>
+                            </figure>
+                        </div>
+
+                        <div class="tag">
+                            <img src="static/mainapp/images/tag.png" alt=" " class="img-responsive" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div style="float: right; margin-top: 10px;"><a href="#"> view more </a> </div>
+            <!-- end of one product  -->
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //top-brands -->
+
+<div class="fresh-vegetables">
+    <div class="container">
+        <h3>Top Products</h3>
+        <div class="w3l_fresh_vegetables_grids">
+
+            <div class="col-md-9 w3l_fresh_vegetables_grid_right">
+                <div class="col-md-4 w3l_fresh_vegetables_grid">
+                    <div class="w3l_fresh_vegetables_grid1">
+                        <img src="static/2.jpg" alt=" " class="img-responsive" style="margin-left: 80px;" />
+                    </div>
+                </div>
+                <div class="col-md-4 w3l_fresh_vegetables_grid">
+                    <div class="w3l_fresh_vegetables_grid1">
+                        <div class="w3l_fresh_vegetables_grid1_rel">
+                            <img src="static/1.jpeg" alt=" " class="img-responsive" />
+                            <div class="w3l_fresh_vegetables_grid1_rel_pos">
+                                <div class="more m1">
+                                    <a href="products.html" class="button--saqui button--round-l button--text-thick"
+                                        data-text="Shop now">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3l_fresh_vegetables_grid1_bottom">
+                        <img src="static/liquor11.jpg" alt=" " class="img-responsive" />
+                        <div class="w3l_fresh_vegetables_grid1_bottom_pos">
+                            <h5>Special Offers</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 w3l_fresh_vegetables_grid">
+                    <div class="w3l_fresh_vegetables_grid1">
+                        <img src="static/liquor7.jpg" alt=" " class="img-responsive" />
+                    </div>
+                </div>
+
+
+
+                <div class="clearfix"> </div>
+                <div class="agileinfo_move_text">
+                    <div class="agileinfo_marquee">
+                        <h4>get <span class="blink_me">25% off</span> on first order and also get gift voucher</h4>
+                    </div>
+                    <div class="agileinfo_breaking_news">
+                        <span> </span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- newsletter -->
+<div class="newsletter">
+    <div class="container">
+        <div class="w3agile_newsletter_left">
+            <h3>sign up for our newsletter</h3>
+        </div>
+        <div class="w3agile_newsletter_right">
+            <form action="#" method="post">
+                <input type="email" name="Email" value="Email" onfocus="this.value = '';"
+                    onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                <input type="submit" value="subscribe now">
+            </form>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- //newsletter -->
+
+{% endblock body %}
+<!-- //footer -->
